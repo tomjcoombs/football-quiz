@@ -7,14 +7,21 @@ form.addEventListener('submit', e => {
   let score = 0;
   let userAnswers = [form.q1.value, form.q2.value, form.q3.value];
 
-  for (let i = 0; i < userAnswers.length; i++ ) {
-    if (userAnswers[i] === correctAnswers[i]){
+  //more verbose approach
+  // for (let i = 0; i < userAnswers.length; i++ ) {
+  //   if (userAnswers[i] === correctAnswers[i]){
+  //     score++;
+  //   }
+  //   else {
+  //     continue;
+  //   }
+  // }
+
+  userAnswers.forEach((currentAnswer, i) => {
+    if (currentAnswer === correctAnswers[i]){
       score++;
     }
-    else {
-      continue;
-    }
-  }
+  })
 
   alert(`you scored ${score} points!`);
   console.log(score);
