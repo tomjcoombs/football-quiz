@@ -1,5 +1,6 @@
 const correctAnswers = ['B', 'B', 'A'];
 const form = document.querySelector('.quiz-form');
+const result = document.querySelector('.result');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -19,10 +20,42 @@ form.addEventListener('submit', e => {
 
   userAnswers.forEach((currentAnswer, i) => {
     if (currentAnswer === correctAnswers[i]){
-      score++;
+      score+= 25;
     }
   })
 
-  alert(`you scored ${score} points!`);
+  scrollTo(0,0);
+  //document.querySelector("#result").textContent = `${score}%`;
+  result.classList.remove('d-none');
+
+  let output = 0;
+
+  const animateScore = setInterval(() => {
+
+    result.querySelector("#result").textContent = `${output}%`;
+    
+    if (output === score){
+      clearInterval(animateScore);
+    } else {
+      output++;
+    }
+
+  }, 10);
+
+
+
+
+  // let i = 0;
+  // const timer = setInterval(() => {
+  //   console.log('hello');
+  // }, 1000);
+  
+  
+
+  
+
+  
+
+  //alert(`you scored ${score} points!`);
   console.log(score);
 })
